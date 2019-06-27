@@ -1,0 +1,13 @@
+= ffind-mtime
+
+Fast find by modification time.  This is a simple cruft detector for your filesystem.
+
+----
+ffind-mtime <path> <age>
+----
+
+Exit with status 0 if all files beneath `<path>` are at least `<age>` or older.  File age is derived from i-node `mtime` and the system clock.  Exit with status 10 if any file is found to be younger than `<age>`.  The first young file will terminate the search:  this is the _fast_ in _fast find_.
+
+`<path>` may be a directory or non-directory.  `<age>` is an integral number of seconds; the number may optionally be followed by an `s`, `m`, `h`, `d`, `w`, or `y` to specify a multiple seconds, minutes, hours, days, weeks, or years.
+
+No output is written if the search terminates without encountering an I/O error.
